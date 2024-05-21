@@ -1,0 +1,22 @@
+---
+import '../../styles/reset.css'
+import { ViewTransitions } from 'astro:transitions';
+---
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Blog</title>
+    <ViewTransitions />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/list">List</a></li>
+        </ul>
+    </nav>
+    <slot />
+</body>
+</html>

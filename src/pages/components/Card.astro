@@ -1,0 +1,12 @@
+---
+import { formatDate } from '../../utils/formatDate';
+
+const { href, title, url, createdAt } = Astro.props;
+---
+<article class="card">
+  <a href={href} class="card-item">
+    <img src={url} alt="" class="card-img">
+    <h2 class="card-title">{title}</h2>
+    <span class="card-date">{new formatDate(createdAt).toJpDateWithWeek()}</span>
+  </a>
+</article>

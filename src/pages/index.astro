@@ -1,0 +1,16 @@
+---
+import Layout from './layouts/layout.astro';
+import { getAllPosts } from '../api/microcms/getAllPosts';
+
+const res = await getAllPosts({ fields: ["id", "title", "createdAt", "url"] });
+---
+
+<Layout>
+  <h1>Top Page</h1>
+  <main class="main">
+    <div class="content">
+      <h2>Home</h2>
+      <p>This page is Home</p>
+    </div>
+  </main>
+</Layout>
