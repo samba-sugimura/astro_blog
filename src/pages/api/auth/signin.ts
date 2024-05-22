@@ -2,20 +2,19 @@ import type { APIRoute } from "astro";
 import { supabase } from "../../../lib/supabase";
 import type { Provider } from "@supabase/supabase-js";
 
-console.log('fire');
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const formData = await request.formData();
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
   const provider = formData.get("provider")?.toString();
 
-  const validProviders = ["google", "github", "discord"];
-
-  if (provider && validProviders.includes(provider)) {
+  if (provider) {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider as Provider,
       options: {
-        redirectTo: "https://astro-blog-nine-tan.vercel.app/api/auth/callback"
+        redirectTo: import.meta.env.DEV
+          ? "http://localhost:4321/api/auth/callback"
+          : "https://astro-supabase-auth.vercel.app/api/auth/callback",
       },
     });
 
@@ -41,10 +40,15 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 
   const { access_token, refresh_token } = data.session;
   cookies.set("sb-access-token", access_token, {
+    sameSite: "strict",
     path: "/",
+    secure: true,
   });
   cookies.set("sb-refresh-token", refresh_token, {
+    sameSite: "strict",
     path: "/",
+    secure: true,
   });
+
   return redirect("/dashboard");
 };

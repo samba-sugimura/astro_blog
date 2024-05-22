@@ -1,0 +1,26 @@
+---
+import Layout from '../../layout/Layout.astro';
+import { getPostDetail, type PostDetail } from "../api/microcms/getPostDetail";
+import { formatDate } from "../../utils/formatDate";
+const { postId } = Astro.params;
+let postData: PostDetail | null = null;
+
+if (postId) {
+  postData = await getPostDetail(postId);
+}
+---
+
+<Layout>
+  <h1>Blog Detail</h1>
+  <main class="main">
+    <div class="content">
+      <h2>{postData ? postData.title : ""}</h2>
+      <p>
+        投稿日:{
+          postData ? new formatDate(postData.revisedAt).toJpDateWithWeek() : ""
+        }
+      </p>
+      <div set:html={postData ? postData.content : ""} />
+    </div>
+  </main>
+</Layout>

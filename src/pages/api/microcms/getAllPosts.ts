@@ -2,7 +2,7 @@
 microCMSのAPIからブログ記事を全件取得する関数
 */
 import type { MicroCMSQueries } from "microcms-js-sdk";
-import { client } from './client';
+import { client } from '../../../lib/microcms';
 
 type ImageUrl = {
   url: string;
@@ -37,7 +37,7 @@ export const getAllPosts = async (
       queries,
     })
     .then((res) => {
-      console.log(res, "<<< response all data");
+      // console.log(res, "<<< response all data");
       return res;
     })
     .catch((err) => console.error(err));

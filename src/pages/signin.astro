@@ -1,5 +1,5 @@
 ---
-import Layout from "./layouts/layout.astro";
+import Layout from '../layout/Layout.astro';
 
 const { cookies, redirect } = Astro;
 
@@ -14,12 +14,18 @@ if (accessToken && refreshToken) {
 <Layout>
   <h1>Sign in</h1>
   <p>New here? <a href="/register">Create an account</a></p>
-  <form action="/api/auth/signin" method="post">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
-    <button type="submit">Login</button>
-    <button value="github" name="provider" type="submit">Sign in with GitHub</button>
-  </form>
+  <div>
+    <form action="/api/auth/signin" method="post">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div>
+    <form action="/api/auth/signin" method="post">
+      <button value="github" name="provider" type="submit">Sign in with GitHub</button>
+    </form>
+  </div>
 </Layout>

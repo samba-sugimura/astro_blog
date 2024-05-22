@@ -1,7 +1,7 @@
 ---
-import Layout from './layouts/layout.astro';
-import Card from './components/Card.astro';
-import { getAllPosts } from '../api/microcms/getAllPosts';
+import Layout from '../layout/Layout.astro';
+import Card from '../components/Card.astro';
+import { getAllPosts } from './api/microcms/getAllPosts';
 
 const res = await getAllPosts({ fields: ["id", "title", "createdAt", "url"] });
 ---
@@ -18,7 +18,7 @@ const res = await getAllPosts({ fields: ["id", "title", "createdAt", "url"] });
         res.contents.map((content: any) => {
           return (
             <Card
-              href={content.id}
+              href={`posts/${content.id}`}
               title={content.title}
               url={content.url.url}
               createdAt={content.createdAt}

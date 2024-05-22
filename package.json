@@ -16,7 +16,11 @@
     "astro": "^4.8.5",
     "cookie": "^0.6.0",
     "microcms-js-sdk": "^3.1.1",
+    "micromatch": "^4.0.7",
     "sass": "^1.77.2",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/micromatch": "^4.0.7"
   }
 }

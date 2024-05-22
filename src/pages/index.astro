@@ -1,8 +1,6 @@
 ---
-import Layout from './layouts/layout.astro';
-import { getAllPosts } from '../api/microcms/getAllPosts';
-
-const res = await getAllPosts({ fields: ["id", "title", "createdAt", "url"] });
+import Layout from '../layout/Layout.astro';
+export const prerender = true;
 ---
 
 <Layout>

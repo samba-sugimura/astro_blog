@@ -2,7 +2,7 @@
 microCMSのAPIからブログ記事の詳細情報を取得する関数
 */
 import type { MicroCMSQueries } from "microcms-js-sdk";
-import { client } from './client';
+import { client } from '../../../lib/microcms';
 
 export type PostDetail = {
   id: string;
@@ -24,7 +24,7 @@ export const getPostDetail = async (
     queries
   })
   .then((res) => {
-    console.log(res, "<<< response detail data");
+    // console.log(res, "<<< response detail data");
     return res;
   })
   .catch((err) => console.error(err));
