@@ -14,7 +14,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
       options: {
         redirectTo: import.meta.env.DEV
           ? "http://localhost:4321/api/auth/callback"
-          : "astro-blog-nine-tan.vercel.app/api/auth/callback",
+          : "http://astro-blog-nine-tan.vercel.app/api/auth/callback",
       },
     });
 
